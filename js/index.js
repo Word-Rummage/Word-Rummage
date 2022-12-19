@@ -37,7 +37,7 @@ function fillBoard() {
   for (let i = 0; i < blockCount; i++){
     let fillLetter = document.getElementById(`block-${i}`);
     let randLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-    fillLetter.innerText = randLetter;
+    fillLetter.innerText = randLetter.toUpperCase();
   }
 }
 

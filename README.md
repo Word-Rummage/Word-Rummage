@@ -18,4 +18,4 @@ Word search game where the user will click through different tables and will onl
 
 ## Domain Model
 
-![image of our website domain model](/assets/Word%20Rummage%20Domain%20Model.png "Domain Model of our website")
+![image of our website domain model](/assets/wordRummageDomainModel.png "Domain Model of our website")

@@ -1,0 +1,38 @@
+
+
+body {
+  background: #101010;
+background: linear-gradient(90deg,#101010 0%, #797979 75%);
+background: -webkit-linear-gradient(90deg,#101010 0%, #797979 75%);
+background: -moz-linear-gradient(90deg,#101010 0%, #797979 75%);
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  padding: 3rem;
+}
+
+img {
+  border: solid;
+  width: 450px;
+  height: 675px;
+  
+}
+
+h1{
+  font-size:3em;
+  color: white;
+
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+h3 {
+  color: white;
+  font-size: 2em;
+  font-family:
+  
+}
+
+

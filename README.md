@@ -15,3 +15,7 @@ Word search game where the user will click through different tables and will onl
 ## Wireframe
 
 ![image of our website wireframe](/assets/websiteWireFraming.jpg "Wireframe of our website")
+
+## Domain Model
+
+![image of our website domain model](/assets/Word%20Rummage%20Domain%20Model.png "Domain Model of our website")

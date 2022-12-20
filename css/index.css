@@ -3,7 +3,7 @@
   src: url('../assets/videophreak.regular.ttf') format('truetype');
 }
 
-.letter-block{
+.letter-block, .correct-answer{
   height: 20px;
   width: 20px;
   border: 1px solid;
@@ -86,10 +86,14 @@ nav a {
   
 }
 
-.letter-block {
+.letter-block, .correct-answer {
   min-width:30px;
   min-height:30px;
   padding:60px
+}
+
+.correct-answer:hover{
+  background-color:white;
 }
 
 .letter-block:hover {

@@ -1,12 +1,15 @@
-
+@font-face {
+  font-family: "videophreak";
+  src: url('../assets/videophreak.regular.ttf') format('truetype');
+}
 
 body {
   background: #101010;
-  background: rgb(246,246,246);
-  background: linear-gradient(0deg, rgba(246,246,246,1) 0%, rgba(140,191,255,1) 100%);
+  background: rgb(246, 246, 246);
+  background: linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(140, 191, 255, 1) 100%);
   font-family: sans-serif;
   padding: 3rem;
-  color:#343A40;
+  color: #343A40;
   min-height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -15,7 +18,7 @@ body {
 img {
   border-radius: 50%;
   width: 300px;
-  height: 300px;  
+  height: 300px;
 }
 
 a {
@@ -24,45 +27,55 @@ a {
   font-size: 1.3em;
 }
 
-h1{
-  font-size:4em;
+h1 {
+  font-size: 4em;
+  font-family: 'videophreak';
 }
 
 h2 {
   font-size: 2em;
+  display: inline;
 }
 
 nav {
   display: flex;
   margin: 20px 0px;
 }
+
 nav ul {
   margin-left: auto;
 }
+
 nav a {
   margin: 10px 10px;
 }
-.about-container {
-  text-align: center;
-}
-.about-container h2{
-  margin: 40px auto 10px;
-  display: inline-block;
-  text-align: center;
-  font-size: 3em;
-  position: relative;
-}
-.about-container hr{
+
+#about-container h2 {
   display: inline;
+  margin: 18px;
+}
+
+#about-container {
+  display: flex;
   text-align: center;
 }
+
+#about-container hr {
+  margin: auto;
+  flex: 1;
+}
+
+
+
 .container {
   display: flex;
   margin: 2em;
 }
+
 .container:nth-child(2n) {
   flex-direction: row-reverse;
-} 
+}
+
 .container h2 {
   width: 150px;
   margin: auto 20px;
@@ -72,15 +85,17 @@ nav a {
   width: 300px;
   height: 300px;
 }
+
 .image-container img {
   box-shadow: 5px 5px 3px #444;
 }
+
 .text-wrapper {
   opacity: 0;
   transition: .5s ease-in-out;
   width: 0px;
   height: 300px;
-  background-color: rgba(54, 54, 54, 0.7);
+  background-color: rgba(0,0,0,0.75);
   color: rgb(185, 185, 185);
   border-radius: 10px;
 }
@@ -90,15 +105,16 @@ nav a {
   margin: 10px 15%;
   position: absolute;
   line-height: 1.5em;
-  color: rgba(0,0,0,0.0);
+  color: rgba(0, 0, 0, 0.0);
   transition: .2s ease-in-out;
 }
 
-.container:hover .text-wrapper{
+.container:hover .text-wrapper {
   opacity: 1;
   width: 50%;
   height: 300px;
 }
+
 .container:hover .text-wrapper p {
   transition-delay: .5s;
   color: #ddd;

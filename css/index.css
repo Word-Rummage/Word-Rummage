@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "videophreak";
+  src: url('../assets/videophreak.regular.ttf') format('truetype');
+}
+
 .letter-block{
   height: 20px;
   width: 20px;
@@ -7,4 +12,92 @@
 .letter-row{
   display: flex;
 
+}
+
+body {
+  background: #101010;
+  background: rgb(246, 246, 246);
+  background: linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(140, 191, 255, 1) 100%);
+  font-family: sans-serif;
+  padding: 3rem;
+  color: #343A40;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#top-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2em;
+  
+}
+
+#target-word p {
+  display:inline;
+  margin-left: 8px;
+}
+
+
+
+#top-bar h2 {
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgba(240,240,240,0.5);
+}
+
+h1 {
+  font-size: 4em;
+  font-family: 'videophreak';
+  text-shadow: -2px 5px 4px rgba(0,0,0,0.6);
+  display:inline;
+  background-color: rgba(240,240,240,0.5);
+  padding: 5px 10px;
+  border-radius: 10px;
+  box-shadow: -15px 14px 5px 1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -15px 14px 5px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: -15px 14px 5px 1px rgba(0,0,0,0.75);
+
+}
+
+a {
+  text-decoration: none;
+  color: #343A40;
+  font-size: 1.3em;
+}
+
+nav {
+  display: flex;
+  margin: 20px 0px;
+}
+
+nav ul {
+  margin-left: auto;
+}
+
+nav a {
+  margin: 10px 10px;
+}
+
+#gameboard {
+  margin:20px auto;
+  display:block;
+  
+}
+
+.letter-block {
+  min-width:30px;
+  min-height:30px;
+  padding:60px
+}
+
+.letter-block:hover {
+  background-color:white;
+}
+
+.letter-row {
+  justify-content:center;
+  width: max-content;
+  margin:auto;
 }

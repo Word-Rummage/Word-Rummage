@@ -4,13 +4,14 @@
 
 // TODO Variable for array of random words
 
-let preWord = 'apse aqua arch arcs area aria';
-let wordArray = preWord.split(' ');
+let preWord = 'abed,abet,able,ably,abut,acai,aced,aces,ache,achy,acid,acme,acne,acre,acts,adds,adit,adze,aeon,afar,afro,agar,aged,ages,agog,ague,ahem,aide,aids,ails,aims,airs,airy,ajar,akin,alar,alas,ales,alga,ally,alms,aloe,also,alto,alum,ambo,amen,amid,ammo,amok,amps,amyl,ands,anew,ankh,anna,anon,anti,ants,apes,apex,apps,apse,aqua,arch,arcs,area,aria,arid,aril,arks,arms,army,arse,arts,arty,arum,aryl,ashy,asks,atom,atop,aunt,aura,auto,aver,avid,avow,away,awed,awes,awls,awry,axed,axel,axes,axil,axis,axle,axon,,baba,babe,baby,bach,back,bade,bads,bags,baht,bail,bait,bake,bald,bale,balk,ball,balm,band,bane,bang,bank,bans,barb,bard,bare,barf,bark,barn,bars,base,bash,bask,bass,bast,bath,bats,batt,baud,bawl,bays,bead,beak,beam,bean,bear,beat,beau,beck,beds,beef,been,beep,beer,bees,beet,begs,bell,belt,bend,bent,berg,berm,best,beta,bets,bevy,beys,bias,bibb,bibs,bide,bids,bier,biff,bike,bile,bilk,bill,bind,bint,bios,bird,bite,bits,blab,blah,bleb,bled,blew,blip,blob,bloc,blog,blot,blow,blue,blur,boar,boas,boat,bobs,bode,bods,body,bogs,bogy,boil,bola,bold,bole,boll,bolo,bolt,bomb,bond,bone,bong,bonk,bony,boob,book,boom,boon,boor,boos,boot,bore,born,boss,both,bots,bout,bowl,bows,boxy,boyo,boys,bozo,brad,brag,bran,bras,brat,bray,bred,brew,brie,brig,brim,brio,bris,brit,bros,brow,buck,buds,buff,bugs,bulb,bulk,bull,bump,bums,bund,bung,bunk,buns,bunt,buoy,burb,burg,burl,burn,burp,burr,bury,bush,busk,buss,bust,busy,butt,buys,buzz,byes,byre,byte,cabs,cads,cafe,caff,cage,cake,calf,call,calm,came,cami,camo,camp,cams,cane,cans,cape,capo,caps,carb,card,care,carp,carr,cars,cart,case,cash,cask,cast,cats,caul,cava,cave,cavy';
+let wordArray = preWord.split(',');
 let timer = 60;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let blockCount = 0;
 let rowCount = 0;
 let answer;
+let boardSize = 10;
 
 // ***** DOM WINDOWS *****
 let gameContainer = document.getElementById('gameboard');
@@ -21,13 +22,13 @@ let answerElem = document.getElementById('target-word');
 // TODO Game Loop
 // TODO create random game board
 function createGameBoard() {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < boardSize; i++) {
     let letterRow = document.createElement('div');
     gameContainer.appendChild(letterRow);
     letterRow.id = `row-${i + 1}`;
     letterRow.className = 'letter-row';
     rowCount++;
-    for (let j = i * 6; j < (i + 1) * 6; j++) {
+    for (let j = i * boardSize; j < (i + 1) * boardSize; j++) {
       let letter = document.createElement('div');
       letterRow.appendChild(letter);
       letter.id = `block-${j}`;
@@ -85,7 +86,7 @@ function horizontalFill() {
 function verticalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
   console.log(randNum);
-  console.log(randNum % rowCount);
+  console.log(randNum / rowCount);
   answer = wordBreak();
   displayAnswer();
   if ((randNum / rowCount) + answer.length > rowCount) {
@@ -107,32 +108,54 @@ function verticalFill() {
 function diagonalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
   console.log(randNum);
+  console.log(randNum / rowCount);
   console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
-  if ((randNum / rowCount) + answer.length > rowCount) {
-    for (let i = 0; i < answer.length; i++) {
-      let fillLetter = document.getElementById(`block-${randNum}`);
-      fillLetter.innerText = answer[i].toUpperCase();
-      randNum -= rowCount - 1;
+  if ((randNum % rowCount) + answer.length > rowCount) {
+    // backwards up
+    if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
+      for (let i = 0; i < answer.length; i++) {
+        let fillLetter = document.getElementById(`block-${randNum}`);
+        fillLetter.innerText = answer[i].toUpperCase();
+        randNum = randNum - rowCount - 1;
+      }
+      // backwards down
+    } else {
+      for (let i = 0; i < answer.length; i++) {
+        let fillLetter = document.getElementById(`block-${randNum}`);
+        fillLetter.innerText = answer[i].toUpperCase();
+        randNum = randNum + rowCount - 1;
+      }
     }
   } else {
-    for (let i = 0; i < answer.length; i++) {
-      let fillLetter = document.getElementById(`block-${randNum}`);
-      fillLetter.innerText = answer[i].toUpperCase();
-      randNum += rowCount + 1;
-
+    // forwards up
+    if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
+      for (let i = 0; i < answer.length; i++) {
+        let fillLetter = document.getElementById(`block-${randNum}`);
+        fillLetter.innerText = answer[i].toUpperCase();
+        randNum = randNum - rowCount + 1;
+      }
+      // forwards down
+    } else {
+      for (let i = 0; i < answer.length; i++) {
+        let fillLetter = document.getElementById(`block-${randNum}`);
+        fillLetter.innerText = answer[i].toUpperCase();
+        randNum = randNum + rowCount + 1;
+      }
     }
   }
 }
 
 // TODO randomly select a direction
 function directionSelector() {
-  let randoNum = Math.floor(Math.random() * 2);
+  let randoNum = Math.floor(Math.random() * 3);
   if (randoNum === 0) {
     horizontalFill();
   } else if (randoNum === 1) {
     verticalFill();
+  }else{
+    diagonalFill();
   }
 }
 

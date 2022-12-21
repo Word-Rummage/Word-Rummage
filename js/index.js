@@ -27,7 +27,9 @@ let gameContainer = document.getElementById('gameboard');
 let answerElem = document.getElementById('target-word');
 let timeContainer = document.getElementById('timer');
 let scoreContainer = document.getElementById('current-score');
-// let gameOverSubmit = document.getElementById('userNameForm');
+let reviewForm = document.getElementById('review-form');
+let reviewContainer = document.getElementById('review-container');
+
 
 // ***** FUNCTIONS & UTILITIES *****
 // TODO User Input for name and name location
@@ -305,11 +307,19 @@ function handleStart(event) {
     event.target.style.backgroundColor = 'red';
   }
 }
+function handleReview(event){
+  event.preventDefault();
 
+  let submitItem = event.target.review.value;
+  let reviewParagraph = document.createElement('p');
+  console.log(submitItem);
+  reviewParagraph.textContent = `${submitItem}`;
+  reviewParagraph.className = 'user-review';
+  reviewContainer.appendChild(reviewParagraph);
+}
 function handleSubmit(event) {
   event.preventDefault();
   let userName = event.target.userName.value;
-
   let newPlayer = new Player(userName, score, round);
   playerArray.push(newPlayer);
   let stringifiedPlayer = JSON.stringify(playerArray);
@@ -331,5 +341,5 @@ if (storedPlayer){
 }
 createStart();
 gameContainer.addEventListener('click', handleStart);
-// gameOverSubmit.addEventListener('submit', handleSubmit);
+reviewForm.addEventListener('submit', handleReview);
 

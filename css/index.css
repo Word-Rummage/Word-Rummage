@@ -32,16 +32,33 @@ body {
   justify-content: center;
 }
 
+#top-bar h2{
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+#bottom-bar {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+  display:flex;
+  justify-content: center;
+  gap: 40px;
+}
+
 #target-word p {
   display: inline;
   margin-left: 8px;
 }
 
-#top-bar h2 {
+#bottom-bar h2 {
   display: inline;
   padding: 5px 10px;
   border-radius: 10px;
-  margin-left: 40px;
   background-color: rgba(240, 240, 240, 0.5);
 }
 
@@ -84,10 +101,20 @@ nav ul {
 nav a {
   margin: 10px 10px;
 }
+
+section p{
+  font-weight:600px;
+  font-size:25px;
+}
+section legend{
+  font-size:25px;
+}
+
 #game-container {
   display: flex;
   justify-content: center;
 }
+
 #gameboard {
   padding: 20px;
   border: solid #101010;
@@ -117,6 +144,7 @@ nav a {
   border: 1px solid;
   text-align: center;
   padding: 15px;
+  cursor:grab;
 }
 
 button {
@@ -127,14 +155,17 @@ button {
   margin: 12px;
   min-width: 200px;
   padding: 0px 24px;
-  background-color: #1562c7;
+  background-color: rgb(0, 0, 0, 0.75);
   color: white;
-  box-shadow: 0 4px 0 #134694;
-}
-#startBtn {
-margin: auto;
+  box-shadow: 0 4px 0 rgb(240, 240, 240, 0.5);
+  border-radius: 5px;
 
 }
+
+#startBtn {
+margin: auto;
+}
+
 .title-container h2 {
   display: inline;
   margin: 18px;
@@ -183,4 +214,39 @@ footer p {
   25% { color: #00A4BD; }
   50% { color: #FF7A59; }
   75% { color: #00BDA5; }
+}
+
+#review-fieldset {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+legend {
+  margin-left: 10px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+#submit {
+  width: max-content;
+  height: max-content;
+  margin: 10px 10px auto 10px;
+  border: none;
+  display: block;
+  font-size: .875rem;
+  height: 36px;
+  min-width: 200px;
+  padding: 0px 24px;
+  background-color: rgb(0, 0, 0, 0.75);
+  color: white;
+  box-shadow: 0 4px 0 rgb(240, 240, 240, 0.5);
+  border-radius: 5px;
 }

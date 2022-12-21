@@ -284,6 +284,7 @@ function handleReview(event){
   let reviewParagraph = document.createElement('p');
   console.log(submitItem);
   reviewParagraph.textContent = `${submitItem}`;
+  reviewParagraph.className = 'user-review';
   reviewContainer.appendChild(reviewParagraph);
 }
 

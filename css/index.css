@@ -185,3 +185,38 @@ footer p {
   50% { color: #FF7A59; }
   75% { color: #00BDA5; }
 }
+
+#review-fieldset {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+legend {
+  margin-left: 10px;
+}
+textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+#submit {
+  width: max-content;
+  height: max-content;
+  margin: 10px 10px auto 10px;
+  border: none;
+  display: block;
+  font-size: .875rem;
+  height: 36px;
+  min-width: 200px;
+  padding: 0px 24px;
+  background-color: rgb(0, 0, 0, 0.75);
+  color: white;
+  box-shadow: 0 4px 0 rgb(240, 240, 240, 0.5);
+  border-radius: 5px;
+}

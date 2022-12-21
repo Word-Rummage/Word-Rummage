@@ -73,7 +73,7 @@ function wordBreak() {
 
 // TODO creat function to display answer
 function displayAnswer() {
-  answerElem.innerText = answer.join('');
+  answerElem.innerText = `TARGET WORD: ${answer.join('')}`;
 }
 
 // TODO Create horizontal fill
@@ -221,11 +221,13 @@ function advanceTimer() {
 function gameOver() {
   clearInterval(timerInterval);
   wipeBoard();
+  correctAnswerArray = [];
+  correctBlockArray = [];
+  timeContainer.textContent = 'Time Remaining 0';
   let endMessage = document.createElement('div');
   endMessage.innerText = 'Game Over!';
   gameContainer.appendChild(endMessage);
   createStart();
-
 }
 
 function nextRound(){

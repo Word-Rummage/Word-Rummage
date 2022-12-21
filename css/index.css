@@ -155,7 +155,7 @@ margin: auto;
   justify-content: center;
   -webkit-animation-name: bounce;
   animation-name: bounce;
-  animation-duration: 1.8s;
+  animation-duration: 2s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;

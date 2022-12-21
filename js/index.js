@@ -209,7 +209,7 @@ function wipeBoard() {
 function advanceTimer() {
   if (timer > 0) {
     timer -= 1;
-    timeContainer.textContent = `Time Remaining ${timer}`;
+    timeContainer.textContent = `TIME REMAINING: ${timer}`;
   } else {
     gameOver();
     timer = startTime;
@@ -224,7 +224,7 @@ function gameOver() {
   wipeBoard();
   correctAnswerArray = [];
   correctBlockArray = [];
-  timeContainer.textContent = 'Time Remaining 0';
+  timeContainer.textContent = 'TIME REMAINING: 0';
   let endMessage = document.createElement('div');
   endMessage.innerText = 'Game Over!';
   gameContainer.appendChild(endMessage);

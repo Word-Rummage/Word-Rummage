@@ -2,71 +2,18 @@
   font-family: "videophreak";
   src: url('../assets/videophreak.regular.ttf') format('truetype');
 }
-
-body {
-  background: #101010;
-  background: rgb(246, 246, 246);
-  background: linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(140, 191, 255, 1) 100%);
-  font-family: sans-serif;
-  padding: 3rem;
-  color: #343A40;
-  min-height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+body{
+  overflow-x: hidden;
 }
-
 img {
   border-radius: 50%;
   width: 300px;
   height: 300px;
 }
 
-a {
-  text-decoration: none;
-  color: #343A40;
-  font-size: 1.3em;
-}
-
-h1 {
-  font-size: 4em;
-  font-family: 'videophreak';
-}
-
 h2 {
   font-size: 2em;
-  display: inline;
 }
-
-nav {
-  display: flex;
-  margin: 20px 0px;
-}
-
-nav ul {
-  margin-left: auto;
-}
-
-nav a {
-  margin: 10px 10px;
-}
-
-#about-container h2 {
-  display: inline;
-  margin: 18px;
-}
-
-#about-container {
-  display: flex;
-  text-align: center;
-}
-
-#about-container hr {
-  margin: auto;
-  flex: 1;
-}
-
-
-
 .container {
   display: flex;
   margin: 2em;

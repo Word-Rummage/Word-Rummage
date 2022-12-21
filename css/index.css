@@ -131,10 +131,11 @@ button {
   color: white;
   box-shadow: 0 4px 0 #134694;
 }
+
 #startBtn {
 margin: auto;
-
 }
+
 .title-container h2 {
   display: inline;
   margin: 18px;

@@ -26,6 +26,8 @@ let gameContainer = document.getElementById('gameboard');
 let answerElem = document.getElementById('target-word');
 let timeContainer = document.getElementById('timer');
 let scoreContainer = document.getElementById('current-score');
+let reviewForm = document.getElementById('review-form');
+let reviewContainer = document.getElementById('review-container');
 
 // ***** FUNCTIONS & UTILITIES *****
 // TODO User Input for name and name location
@@ -275,6 +277,15 @@ function handleStart(event) {
   }
 }
 
+function handleReview(event){
+  event.preventDefault();
+
+  let submitItem = event.target.review.value;
+  let reviewParagraph = document.createElement('p');
+  console.log(submitItem);
+  reviewParagraph.textContent = `${submitItem}`;
+  reviewContainer.appendChild(reviewParagraph);
+}
 
 // TODO Need to figure out how the user is clicking the words
 
@@ -284,4 +295,4 @@ function handleStart(event) {
 // directionSelector();
 createStart();
 gameContainer.addEventListener('click', handleStart);
-
+reviewForm.addEventListener('submit', handleReview);

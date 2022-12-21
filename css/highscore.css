@@ -1,0 +1,19 @@
+#table-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+#scoreTable {
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+#scoreTable th {
+  padding: 10px 20px;
+  font-weight: 700;
+  border: solid #000;
+}
+#scoreTable td {
+  padding: 10px 20px;
+  border: solid #000;
+}

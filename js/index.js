@@ -2,7 +2,7 @@
 
 // ***** GLOBALS *****
 
-let startTime = 60;
+let startTime = 1;
 let timer = startTime;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let blockCount = 0;

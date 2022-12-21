@@ -45,15 +45,16 @@
     <section id="instructions">
       <p>Insert Instructions</p>
     </section>
-    <section id="review">
-      <form>
+    <section id="review-container">
+      <form id="review-form">
         <fieldset>
           <legend>Leave a Review</legend>
-          <input type="text" name="review" id="review" value="Your message">
+          <input type="text" name="review" id="review" placeholder="Your message">
           <label for="review"></label>
+          <label hidden for="submit">Submit</label>
+          <input type="submit" id="submit" name="submit"> 
         </fieldset>
       </form>
-      <button type="submit">Submit</button>
     </section>
 
   </main>

@@ -6,7 +6,7 @@
 
 let preWord = 'abed,abet,able,ably,abut,acai,aced,aces,ache,achy,acid,acme,acne,acre,acts,adds,adit,adze,aeon,afar,afro,agar,aged,ages,agog,ague,ahem,aide,aids,ails,aims,airs,airy,ajar,akin,alar,alas,ales,alga,ally,alms,aloe,also,alto,alum,ambo,amen,amid,ammo,amok,amps,amyl,ands,anew,ankh,anna,anon,anti,ants,apes,apex,apps,apse,aqua,arch,arcs,area,aria,arid,aril,arks,arms,army,arse,arts,arty,arum,aryl,ashy,asks,atom,atop,aunt,aura,auto,aver,avid,avow,away,awed,awes,awls,awry,axed,axel,axes,axil,axis,axle,axon,baba,babe,baby,bach,back,bade,bads,bags,baht,bail,bait,bake,bald,bale,balk,ball,balm,band,bane,bang,bank,bans,barb,bard,bare,barf,bark,barn,bars,base,bash,bask,bass,bast,bath,bats,batt,baud,bawl,bays,bead,beak,beam,bean,bear,beat,beau,beck,beds,beef,been,beep,beer,bees,beet,begs,bell,belt,bend,bent,berg,berm,best,beta,bets,bevy,beys,bias,bibb,bibs,bide,bids,bier,biff,bike,bile,bilk,bill,bind,bint,bios,bird,bite,bits,blab,blah,bleb,bled,blew,blip,blob,bloc,blog,blot,blow,blue,blur,boar,boas,boat,bobs,bode,bods,body,bogs,bogy,boil,bola,bold,bole,boll,bolo,bolt,bomb,bond,bone,bong,bonk,bony,boob,book,boom,boon,boor,boos,boot,bore,born,boss,both,bots,bout,bowl,bows,boxy,boyo,boys,bozo,brad,brag,bran,bras,brat,bray,bred,brew,brie,brig,brim,brio,bris,brit,bros,brow,buck,buds,buff,bugs,bulb,bulk,bull,bump,bums,bund,bung,bunk,buns,bunt,buoy,burb,burg,burl,burn,burp,burr,bury,bush,busk,buss,bust,busy,butt,buys,buzz,byes,byre,byte,cabs,cads,cafe,caff,cage,cake,calf,call,calm,came,cami,camo,camp,cams,cane,cans,cape,capo,caps,carb,card,care,carp,carr,cars,cart,case,cash,cask,cast,cats,caul,cava,cave,cavy';
 let wordArray = preWord.split(',');
-let timer = 1000;
+let timer = 60;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let blockCount = 0;
 let rowCount = 0;
@@ -15,6 +15,7 @@ let boardSize = 6;
 let score = 0;
 let timerInterval;
 let correctAnswerArray = [];
+let correctBlockArray = [];
 
 
 
@@ -64,7 +65,7 @@ function fillBoard() {
 }
 // TODO Create function for breaking word apart
 function wordBreak() {
-  let randAnswer = wordArray[Math.floor(Math.random() * wordArray.length)];
+  let randAnswer = wordArray[Math.floor(Math.random() * wordArray.length)].toUpperCase();
   let answer = randAnswer.split('');
   return answer;
 }
@@ -81,11 +82,12 @@ function horizontalFill() {
   console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
-  if ((randNum % rowCount) + answer.length > rowCount) {
+  if (Math.floor((randNum % rowCount) + answer.length) > rowCount) {
     for (let i = 0; i < answer.length; i++) {
       let fillLetter = document.getElementById(`block-${randNum}`);
       fillLetter.innerText = answer[i].toUpperCase();
       fillLetter.className = 'correct-answer';
+      correctBlockArray.push(`block-${randNum}`);
       randNum--;
     }
   } else {
@@ -93,7 +95,7 @@ function horizontalFill() {
       let fillLetter = document.getElementById(`block-${randNum}`);
       fillLetter.innerText = answer[i].toUpperCase();
       fillLetter.className = 'correct-answer';
-
+      correctBlockArray.push(`block-${randNum}`);
       randNum++;
 
     }
@@ -106,12 +108,12 @@ function verticalFill() {
   console.log(randNum / rowCount);
   answer = wordBreak();
   displayAnswer();
-  if ((randNum / rowCount) + answer.length > rowCount) {
+  if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
     for (let i = 0; i < answer.length; i++) {
       let fillLetter = document.getElementById(`block-${randNum}`);
       fillLetter.innerText = answer[i].toUpperCase();
       fillLetter.className = 'correct-answer';
-
+      correctBlockArray.push(`block-${randNum}`);
       randNum -= rowCount;
     }
   } else {
@@ -119,7 +121,7 @@ function verticalFill() {
       let fillLetter = document.getElementById(`block-${randNum}`);
       fillLetter.innerText = answer[i].toUpperCase();
       fillLetter.className = 'correct-answer';
-
+      correctBlockArray.push(`block-${randNum}`);
       randNum += rowCount;
 
     }
@@ -140,6 +142,7 @@ function diagonalFill() {
         let fillLetter = document.getElementById(`block-${randNum}`);
         fillLetter.innerText = answer[i].toUpperCase();
         fillLetter.className = 'correct-answer';
+        correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount - 1;
       }
       // backwards down
@@ -148,6 +151,7 @@ function diagonalFill() {
         let fillLetter = document.getElementById(`block-${randNum}`);
         fillLetter.innerText = answer[i].toUpperCase();
         fillLetter.className = 'correct-answer';
+        correctBlockArray.push(`block-${randNum}`);
         randNum = randNum + rowCount - 1;
       }
     }
@@ -158,6 +162,7 @@ function diagonalFill() {
         let fillLetter = document.getElementById(`block-${randNum}`);
         fillLetter.innerText = answer[i].toUpperCase();
         fillLetter.className = 'correct-answer';
+        correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount + 1;
       }
       // forwards down
@@ -166,6 +171,7 @@ function diagonalFill() {
         let fillLetter = document.getElementById(`block-${randNum}`);
         fillLetter.innerText = answer[i].toUpperCase();
         fillLetter.className = 'correct-answer';
+        correctBlockArray.push(`block-${randNum}`);
         randNum = randNum + rowCount + 1;
       }
     }
@@ -179,7 +185,7 @@ function directionSelector() {
     horizontalFill();
   } else if (randoNum === 1) {
     verticalFill();
-  }else{
+  } else {
     diagonalFill();
   }
 }
@@ -221,6 +227,13 @@ function gameOver() {
 
 }
 
+function nextRound(){
+  wipeBoard();
+  createGameBoard();
+  fillBoard();
+  directionSelector();
+}
+
 // ***** CONSTRUCTORS*****
 // TODO Function for splitting words to array
 // TODO name, image, first/last letter flag
@@ -228,23 +241,35 @@ function gameOver() {
 // ***** EVENT HANDLERS*****
 function handleStart(event) {
   let itemClicked = event.target;
-  if (itemClicked.id === 'startBtn'){
-    wipeBoard();
-    createGameBoard();
-    fillBoard();
-    directionSelector();
+  if (itemClicked.id === 'startBtn') {
+    score = 0;
+    nextRound();
     timerInterval = setInterval(advanceTimer, 1000);
 
   }
   if (itemClicked.className === 'correct-answer') {
-    correctAnswerArray.push(event.target.innerText);
-    if (correctAnswerArray === answer){
-      score++; 
+    if (!correctAnswerArray.includes(event.target.id)) {
+      correctAnswerArray.push(event.target.id);
+      console.log(event.target);
+      event.target.style.backgroundColor = 'green';
+      if (correctAnswerArray.length === correctBlockArray.length) {
+        score+= rowCount;
+        scoreContainer.innerText = `Score: ${score}`;
+        correctAnswerArray = [];
+        correctBlockArray = [];
+        console.log(correctAnswerArray);
+        nextRound();
+      }
     }
-
   }
-
+  if(itemClicked.className !== 'correct-answer') {
+    score-= (rowCount/2);
+    scoreContainer.innerText = `Score: ${score}`;
+    event.target.style.backgroundColor = 'red';
+  }
 }
+
+
 // TODO Need to figure out how the user is clicking the words
 
 // *****EXECUTABLE CODE*****

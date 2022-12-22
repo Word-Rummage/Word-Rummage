@@ -213,6 +213,7 @@ function gameOver() {
   timeContainer.textContent = 'TIME REMAINING: 0';
   let endMessage = document.createElement('div');
   endMessage.innerText = 'Game Over!';
+  endMessage.id = 'game-over';
   gameContainer.appendChild(endMessage);
   submitName();
 }
@@ -231,6 +232,7 @@ function submitName() {
   inputName.type = 'text';
   inputName.id = 'userName';
   inputName.name = 'userName';
+  inputName.maxLength = '10';
   fieldName.appendChild(inputName);
   let userBtn = document.createElement('button');
   userBtn.id = 'userBtn';

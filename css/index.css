@@ -12,6 +12,19 @@
   font-family: "chivomono";
   src: url('../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf');
 }
+@keyframes bounce {
+  0% {transform: translateY(-360px);}
+  10%, 30%, 50%, 70%, 90% {transform: translateY(0);} 
+  20% {transform: translateY(-120px);}
+  40% {transform: translateY(-60px);}  
+  60% {transform: translateY(-30px);}
+  80% {transform: translateY(-15px);}
+} 
+@keyframes change-color {
+  25% { color: #00A4BD; }
+  50% { color: #FF7A59; }
+  75% { color: #00BDA5; }
+}
 
 body {
   background: #101010;
@@ -206,19 +219,6 @@ footer p {
   font-size: 26px;
   text-align: center;
 }
-@keyframes bounce {
-  0% {transform: translateY(-360px);}
-  10%, 30%, 50%, 70%, 90% {transform: translateY(0);} 
-  20% {transform: translateY(-120px);}
-  40% {transform: translateY(-60px);}  
-  60% {transform: translateY(-30px);}
-  80% {transform: translateY(-15px);}
-} 
-@keyframes change-color {
-  25% { color: #00A4BD; }
-  50% { color: #FF7A59; }
-  75% { color: #00BDA5; }
-}
 #review-container {
   display: flex;
   flex-direction: column;
@@ -271,6 +271,7 @@ textarea {
 }
 #description-container {
   display: flex;
+  justify-content: center;
 }
 #description {
   display: flex;
@@ -284,6 +285,7 @@ textarea {
   margin: auto;
   background-color: rgba(240, 240, 240, 0.5);
   padding: 10px;
+  border-radius: 5px;
 }
 
 #description h3{
@@ -303,3 +305,26 @@ textarea {
   height: 30px;
   background-color: blueviolet;
 }
+
+#userNameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#userNameForm label {
+  font-family: 'chivomono';
+}
+#game-over {
+  margin: 0px auto 20px;
+  font-size: 2em;
+  font-family: 'videophreak';
+  font-weight: 400;
+  animation-name: change-color;
+  animation-duration: 8s, 5s, 5s;
+  animation-iteration-count: infinite;
+}
+#userName {
+  font-family: 'monochivo';
+  border-radius: 4px;
+}
+

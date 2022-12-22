@@ -56,7 +56,7 @@ p {
   background-color: rgba(240, 240, 240, 0.5);
   border-radius: 5px;
   border: solid rgba(0, 0, 0, 0.5);
-  font-family: 'videophreak', sans-serif;
+  font-family: 'chivomono', sans-serif;
 }
 
 #bottom-bar {
@@ -68,13 +68,9 @@ p {
   display:flex;
   justify-content: center;
   gap: 40px;
-  font-family: 'videophreak',sans-serif;
+  font-family: 'chivomono',sans-serif;
 }
 
-#target-word p {
-  display: inline;
-  margin-left: 8px;
-}
 
 #bottom-bar h2 {
   display: inline;

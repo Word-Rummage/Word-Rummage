@@ -310,7 +310,7 @@ function handleStart(event) {
     if (!correctAnswerArray.includes(event.target.id)) {
       correctAnswerArray.push(event.target.id);
       console.log(event.target);
-      event.target.style.backgroundColor = 'light-green';
+      event.target.style.backgroundColor = '#6ef651';
       if (correctAnswerArray.length === correctBlockArray.length) {
         score += rowCount;
         timer += rowCount;
@@ -327,7 +327,7 @@ function handleStart(event) {
     score -= Math.floor(rowCount / 2);
     timer -= Math.floor(rowCount / 3);
     scoreContainer.innerText = `Score: ${score}`;
-    event.target.style.backgroundColor = 'light-red';
+    event.target.style.backgroundColor = '#f65151';
   }
 }
 function handleReview(event) {

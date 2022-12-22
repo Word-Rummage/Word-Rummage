@@ -14,6 +14,8 @@ function sortHighScore(){
   while(playerArray.length > 10){
     playerArray.pop();
   }
+  let stringifiedPlayer = JSON.stringify(playerArray);
+  localStorage.setItem('playerScore', stringifiedPlayer);
 }
 
 let scoreTable = document.getElementById('scoreTable');

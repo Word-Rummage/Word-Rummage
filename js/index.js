@@ -19,6 +19,8 @@ let bar = 0;
 let barWidth = 1;
 let barTimer;
 let speed = 150;
+let multiplier = 1;
+let multiplierCounter = -1;
 
 // ***** DOM WINDOWS *****
 let gameContainer = document.getElementById('gameboard');
@@ -79,8 +81,6 @@ function displayAnswer() {
 
 function horizontalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
   if (Math.floor((randNum % rowCount) + answer.length) > rowCount) {
@@ -105,8 +105,6 @@ function horizontalFill() {
 
 function verticalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum / rowCount);
   answer = wordBreak();
   displayAnswer();
   if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
@@ -131,13 +129,9 @@ function verticalFill() {
 
 function diagonalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum / rowCount);
-  console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
   if ((randNum % rowCount) + answer.length > rowCount) {
-    // backwards up
     if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -146,7 +140,6 @@ function diagonalFill() {
         correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount - 1;
       }
-      // backwards down
     } else {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -157,7 +150,6 @@ function diagonalFill() {
       }
     }
   } else {
-    // forwards up
     if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -166,7 +158,6 @@ function diagonalFill() {
         correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount + 1;
       }
-      // forwards down
     } else {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -208,9 +199,11 @@ function move() {
 function frame() {
   if (barWidth >= 100) {
     clearInterval(barTimer);
+    multiplierCounter = -1;
+    multiplier = 1;
     nextRound();
     timer -= 5;
-    scoreContainer.innerText = `Score: ${score}`;
+    scoreContainer.innerText = `CURRENT SCORE: ${score}`;
     bar = 0;
   } else {
     barWidth++;
@@ -223,8 +216,6 @@ function advanceTimer() {
     timer -= 1;
     timeContainer.textContent = `TIME REMAINING: ${timer}`;
   } else {
-    // let gameOverColor = document.querySelectorAll('.correct-answer');
-    // gameOverColor.forEach(e => e.body.style.backgroundColor = 'orange');
     gameOver();
     timer = startTime;
   }
@@ -272,10 +263,22 @@ function submitName() {
 function nextRound() {
   if (round % 5 === 0 && round > 1) {
     boardSize++;
-    if (speed > 50) {
-      speed -= 25;
+    if (speed > 75) {
+      speed -= 10;
     }
   }
+
+  if (multiplierCounter === 3) {
+    multiplier++;
+  }
+  if (multiplierCounter === 6) {
+    multiplier++;
+
+  }
+
+  multiplierCounter++;
+  console.log(multiplierCounter);
+  console.log(multiplier);
   correctAnswerArray = [];
   correctBlockArray = [];
   wipeBoard();
@@ -309,15 +312,15 @@ function handleStart(event) {
   if (itemClicked.className === 'correct-answer') {
     if (!correctAnswerArray.includes(event.target.id)) {
       correctAnswerArray.push(event.target.id);
-      console.log(event.target);
       event.target.style.backgroundColor = '#6ef651';
       if (correctAnswerArray.length === correctBlockArray.length) {
-        score += rowCount;
+
+
+        score += (rowCount * multiplier);
         timer += rowCount;
-        scoreContainer.innerText = `Score: ${score}`;
+        scoreContainer.innerText = `CURRENT SCORE: ${score}`;
         correctAnswerArray = [];
         correctBlockArray = [];
-        console.log(correctAnswerArray);
         setTimeout(nextRound, 750);
         clearInterval(barTimer);
       }
@@ -326,7 +329,7 @@ function handleStart(event) {
   if (itemClicked.className !== 'correct-answer' && itemClicked.className === 'letter-block') {
     score -= Math.floor(rowCount / 2);
     timer -= Math.floor(rowCount / 3);
-    scoreContainer.innerText = `Score: ${score}`;
+    scoreContainer.innerText = `CURRENT SCORE: ${score}`;
     event.target.style.backgroundColor = '#f65151';
   }
 }
@@ -335,7 +338,6 @@ function handleReview(event) {
 
   let submitItem = event.target.review.value;
   let reviewParagraph = document.createElement('p');
-  console.log(submitItem);
   reviewParagraph.textContent = `${submitItem}`;
   reviewParagraph.className = 'user-review';
   reviewContainer.appendChild(reviewParagraph);

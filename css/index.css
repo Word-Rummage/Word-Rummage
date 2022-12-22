@@ -295,18 +295,6 @@ textarea {
   font-family: 'videophreak';
 }
 
-#nextRoundProgress {
-  width: 100%;
-  background-color: grey;
-}
-
-#progressBar {
-  width: 1%;
-  height: 30px;
-  background-color: blueviolet;
-}
-
-
 #userNameForm {
   display: flex;
   flex-direction: column;
@@ -331,8 +319,13 @@ textarea {
 #nextRoundProgress {
   border-radius: 5px;
   margin: 10px;
+  width: 100%;
+  background-color: grey;
 }
 #progressBar {
   border-radius: 5px;
   margin: 3px;
+  width: 1%;
+  height: 30px;
+  background-color: blueviolet;
 }

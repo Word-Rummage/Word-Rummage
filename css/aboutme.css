@@ -2,6 +2,24 @@
   font-family: "videophreak";
   src: url('../assets/videophreak.regular.ttf') format('truetype');
 }
+@media (min-width:320px) {
+  img {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+  }
+  main p{
+  width: 90%;
+  margin: 10px auto;
+  background-color: rgba(240, 240, 240, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  }
+  h2 {
+    margin: 10px auto;
+  }
+}
+@media (min-width:1281px) {
 body{
   overflow-x: hidden;
 }
@@ -56,7 +74,8 @@ h2 {
   line-height: 1.5em;
   color: rgba(0, 0, 0, 0.0);
   transition: .2s ease-in-out;
-  font-size: 1.5em;
+  font-size: 1rem;
+  background-color:  rgba(0, 0, 0, 0.0);
 }
 
 .container:hover .text-wrapper {
@@ -68,4 +87,5 @@ h2 {
 .container:hover .text-wrapper p {
   transition-delay: .5s;
   color: #ddd;
+}
 }

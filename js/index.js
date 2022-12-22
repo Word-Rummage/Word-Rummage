@@ -15,7 +15,12 @@ let correctAnswerArray = [];
 let correctBlockArray = [];
 let round = 0;
 let playerArray = [];
-
+let bar = 0;
+let barWidth = 1;
+let barTimer;
+let speed = 150;
+let multiplier = 1;
+let multiplierCounter = -1;
 
 // ***** DOM WINDOWS *****
 let gameContainer = document.getElementById('gameboard');
@@ -24,6 +29,8 @@ let timeContainer = document.getElementById('timer');
 let scoreContainer = document.getElementById('current-score');
 let reviewForm = document.getElementById('review-form');
 let reviewContainer = document.getElementById('review-container');
+let elem = document.getElementById("progressBar");
+
 
 
 // ***** FUNCTIONS & UTILITIES *****
@@ -74,8 +81,6 @@ function displayAnswer() {
 
 function horizontalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
   if (Math.floor((randNum % rowCount) + answer.length) > rowCount) {
@@ -100,8 +105,6 @@ function horizontalFill() {
 
 function verticalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum / rowCount);
   answer = wordBreak();
   displayAnswer();
   if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
@@ -126,13 +129,9 @@ function verticalFill() {
 
 function diagonalFill() {
   let randNum = Math.floor(Math.random() * blockCount);
-  console.log(randNum);
-  console.log(randNum / rowCount);
-  console.log(randNum % rowCount);
   answer = wordBreak();
   displayAnswer();
   if ((randNum % rowCount) + answer.length > rowCount) {
-    // backwards up
     if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -141,7 +140,6 @@ function diagonalFill() {
         correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount - 1;
       }
-      // backwards down
     } else {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -152,7 +150,6 @@ function diagonalFill() {
       }
     }
   } else {
-    // forwards up
     if (Math.floor((randNum / rowCount) + answer.length) > rowCount) {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -161,7 +158,6 @@ function diagonalFill() {
         correctBlockArray.push(`block-${randNum}`);
         randNum = randNum - rowCount + 1;
       }
-      // forwards down
     } else {
       for (let i = 0; i < answer.length; i++) {
         let fillLetter = document.getElementById(`block-${randNum}`);
@@ -192,13 +188,34 @@ function wipeBoard() {
   rowCount = 0;
 }
 
+
+function move() {
+  if (bar === 0) {
+    bar = 1;
+    barWidth = 1;
+    barTimer = setInterval(frame, speed);
+  }
+}
+function frame() {
+  if (barWidth >= 100) {
+    clearInterval(barTimer);
+    multiplierCounter = -1;
+    multiplier = 1;
+    nextRound();
+    timer -= 5;
+    scoreContainer.innerText = `CURRENT SCORE: ${score}`;
+    bar = 0;
+  } else {
+    barWidth++;
+    elem.style.width = barWidth + '%';
+  }
+}
+
 function advanceTimer() {
   if (timer > 0) {
     timer -= 1;
     timeContainer.textContent = `TIME REMAINING: ${timer}`;
   } else {
-    // let gameOverColor = document.querySelectorAll('.correct-answer');
-    // gameOverColor.forEach(e => e.body.style.backgroundColor = 'orange');
     gameOver();
     timer = startTime;
   }
@@ -206,6 +223,7 @@ function advanceTimer() {
 
 function gameOver() {
   clearInterval(timerInterval);
+  clearInterval(barTimer);
   wipeBoard();
   boardSize = 6;
   correctAnswerArray = [];
@@ -213,6 +231,7 @@ function gameOver() {
   timeContainer.textContent = 'TIME REMAINING: 0';
   let endMessage = document.createElement('div');
   endMessage.innerText = 'Game Over!';
+  endMessage.id = 'game-over';
   gameContainer.appendChild(endMessage);
   submitName();
 }
@@ -231,6 +250,7 @@ function submitName() {
   inputName.type = 'text';
   inputName.id = 'userName';
   inputName.name = 'userName';
+  inputName.maxLength = '10';
   fieldName.appendChild(inputName);
   let userBtn = document.createElement('button');
   userBtn.id = 'userBtn';
@@ -241,13 +261,34 @@ function submitName() {
 }
 
 function nextRound() {
-  if(round % 5 === 0 && round > 1){
+  if (round % 5 === 0 && round > 1) {
     boardSize++;
+    if (speed > 75) {
+      speed -= 10;
+    }
   }
+
+  if (multiplierCounter === 3) {
+    multiplier++;
+  }
+  if (multiplierCounter === 6) {
+    multiplier++;
+
+  }
+
+  multiplierCounter++;
+  console.log(multiplierCounter);
+  console.log(multiplier);
+  correctAnswerArray = [];
+  correctBlockArray = [];
   wipeBoard();
   createGameBoard();
   fillBoard();
   directionSelector();
+  barWidth = 1;
+  bar = 0;
+  clearInterval(barTimer);
+  move();
   round++;
 }
 
@@ -271,32 +312,32 @@ function handleStart(event) {
   if (itemClicked.className === 'correct-answer') {
     if (!correctAnswerArray.includes(event.target.id)) {
       correctAnswerArray.push(event.target.id);
-      console.log(event.target);
-      event.target.style.backgroundColor = 'green';
+      event.target.style.backgroundColor = '#6ef651';
       if (correctAnswerArray.length === correctBlockArray.length) {
-        score += rowCount;
-        timer += Math.floor(rowCount / 2);
-        scoreContainer.innerText = `Score: ${score}`;
+
+
+        score += (rowCount * multiplier);
+        timer += rowCount;
+        scoreContainer.innerText = `CURRENT SCORE: ${score}`;
         correctAnswerArray = [];
         correctBlockArray = [];
-        console.log(correctAnswerArray);
         setTimeout(nextRound, 750);
+        clearInterval(barTimer);
       }
     }
   }
   if (itemClicked.className !== 'correct-answer' && itemClicked.className === 'letter-block') {
     score -= Math.floor(rowCount / 2);
     timer -= Math.floor(rowCount / 3);
-    scoreContainer.innerText = `Score: ${score}`;
-    event.target.style.backgroundColor = 'red';
+    scoreContainer.innerText = `CURRENT SCORE: ${score}`;
+    event.target.style.backgroundColor = '#f65151';
   }
 }
-function handleReview(event){
+function handleReview(event) {
   event.preventDefault();
 
   let submitItem = event.target.review.value;
   let reviewParagraph = document.createElement('p');
-  console.log(submitItem);
   reviewParagraph.textContent = `${submitItem}`;
   reviewParagraph.className = 'user-review';
   reviewContainer.appendChild(reviewParagraph);
@@ -318,7 +359,7 @@ function handleSubmit(event) {
 let storedPlayer = localStorage.getItem('playerScore');
 let parsedPlayer = JSON.parse(storedPlayer);
 
-if (storedPlayer){
+if (storedPlayer) {
   playerArray = parsedPlayer;
 }
 createStart();

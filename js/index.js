@@ -277,8 +277,6 @@ function nextRound() {
   }
 
   multiplierCounter++;
-  console.log(multiplierCounter);
-  console.log(multiplier);
   correctAnswerArray = [];
   correctBlockArray = [];
   wipeBoard();

@@ -292,3 +292,14 @@ textarea {
   font-size: 1.3em;
   font-family: 'videophreak';
 }
+
+#nextRoundProgress {
+  width: 100%;
+  background-color: grey;
+}
+
+#progressBar {
+  width: 1%;
+  height: 30px;
+  background-color: blueviolet;
+}

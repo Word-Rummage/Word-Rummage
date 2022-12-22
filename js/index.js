@@ -2,7 +2,7 @@
 
 // ***** GLOBALS *****
 
-let startTime = 1;
+let startTime = 60;
 let timer = startTime;
 let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 let blockCount = 0;
@@ -213,6 +213,7 @@ function gameOver() {
   timeContainer.textContent = 'TIME REMAINING: 0';
   let endMessage = document.createElement('div');
   endMessage.innerText = 'Game Over!';
+  endMessage.id = 'game-over';
   gameContainer.appendChild(endMessage);
   submitName();
 }
@@ -231,6 +232,7 @@ function submitName() {
   inputName.type = 'text';
   inputName.id = 'userName';
   inputName.name = 'userName';
+  inputName.maxLength = '10';
   fieldName.appendChild(inputName);
   let userBtn = document.createElement('button');
   userBtn.id = 'userBtn';

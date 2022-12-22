@@ -12,6 +12,10 @@
   font-family: "chivomono";
   src: url('../assets/Chivo_Mono/ChivoMono-VariableFont_wght.ttf');
 }
+@font-face {
+  font-family: "sharetech";
+  src: url('../assets/ShareTechMono-Regular.ttf') format('truetype');
+}
 
 @keyframes bounce {
   0% {
@@ -63,7 +67,7 @@
     background: #101010;
     background: rgb(246, 246, 246);
     background: linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(140, 191, 255, 1) 100%);
-    font-family: 'lato', sans-serif;
+    font-family: 'sharetech', sans-serif;
     padding: 3rem;
     color: #343A40;
     min-height: 100%;
@@ -93,7 +97,7 @@
     background-color: rgba(240, 240, 240, 0.5);
     border-radius: 5px;
     border: solid rgba(0, 0, 0, 0.5);
-    font-family: 'videophreak', sans-serif;
+    font-family: 'sharetech', sans-serif;
   }
 
   #bottom-bar {
@@ -204,6 +208,8 @@
     text-align: center;
     padding: 15px;
     cursor: grab;
+    font-weight: 700;
+    font-size: larger;
   }
 
   button {
@@ -345,7 +351,7 @@
   }
 
   #userNameForm label {
-    font-family: 'chivomono';
+    font-family: 'sharetech', sans-serif;
   }
 
   #game-over {
@@ -421,7 +427,7 @@
     background: #101010;
     background: rgb(246, 246, 246);
     background: linear-gradient(0deg, rgba(246, 246, 246, 1) 0%, rgba(140, 191, 255, 1) 100%);
-    font-family: 'lato', sans-serif;
+    font-family: 'sharetech', sans-serif;
     padding: 3rem;
     color: #343A40;
     min-height: 100%;
@@ -431,7 +437,7 @@
   }
 
   p {
-    font-family: 'chivomono';
+    font-family: 'sharetech', sans-serif;
   }
 
   #top-bar {
@@ -450,7 +456,7 @@
     background-color: rgba(240, 240, 240, 0.5);
     border-radius: 5px;
     border: solid rgba(0, 0, 0, 0.5);
-    font-family: 'videophreak', sans-serif;
+    font-family: 'sharetech', sans-serif;
   }
 
   #bottom-bar {
@@ -462,7 +468,7 @@
     display: flex;
     justify-content: center;
     gap: 40px;
-    font-family: 'videophreak', sans-serif;
+    font-family: 'sharetech', sans-serif;
   }
 
 
@@ -698,7 +704,7 @@
     width: max-content;
     font-weight: 500;
     font-size: 1.3em;
-    font-family: 'videophreak';
+    font-family: 'sharetech', sans-serif;
   }
 
   #userNameForm {
@@ -708,7 +714,7 @@
   }
 
   #userNameForm label {
-    font-family: 'chivomono';
+    font-family: 'sharetech', sans-serif;
   }
 
   #game-over {
@@ -738,6 +744,6 @@
     margin: 3px;
     width: 1%;
     height: 30px;
-    background-color: blueviolet;
+    background-color: rgb(255, 215, 136);
   }
 }

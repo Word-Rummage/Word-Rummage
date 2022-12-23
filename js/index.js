@@ -226,6 +226,8 @@ function gameOver() {
   clearInterval(barTimer);
   wipeBoard();
   boardSize = 6;
+  multiplier = 1;
+  multiplierCounter = -1;
   correctAnswerArray = [];
   correctBlockArray = [];
   timeContainer.textContent = 'TIME REMAINING: 0';

@@ -1,5 +1,7 @@
 # Word-Rummage
 
+![Demo](./assets/WR-Demo.mp4)
+
 ## Group Members
 
 Brennan Malone
